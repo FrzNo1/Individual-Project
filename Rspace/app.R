@@ -24,7 +24,7 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
              
              
              
-             # tab1: general
+             # tab1: general----------------------------------------------------
              tabPanel(icon("home"),
                       #General description part
                       fluidRow(column(tags$img(src="trafficvio.jpg",width="260px",height="200px"),width=4),
@@ -39,12 +39,13 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
 
              
              
-             # tab2: Analysis of age
+             # tab2: Analysis of age---------------------------------------------
              tabPanel("Ages",
                       # General introduction and analysis part
                       fluidRow(column(width=2),
                                column(
-                                 h3(p("How ages are related to Traffic Violations",style="color:black;text-align:center")),
+                                 h3(p("How Ages are Related to Traffic Violations",
+                                      style="color:black;text-align:center")),
                                  width=8,style="background-color:lavender;border-radius: 10px")),
                       br(),
                       fluidRow(column(width=2, icon("hand-point-right","fa-5x"),align="center"),
@@ -53,26 +54,25 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                                  violations. It includes two parts: "),
                                  p("The first part shows one bar chart about how  
                                  ages are related to violations within all violations and another bar
-                                 chart shows how ages are related to driving in the U.S. Basicly, we
+                                 chart shows how ages are related to car access in the U.S. Basicly, we
                                  find out that within all violations, age range of 20-24 constitute the
                                  highest violation percentage, and decrease as age range increases. For
                                  drving in the U.S., age range of 20-59 contitutes majority of 
                                  driving populations.
                                  "),
                                  p("The second part conbines the provious two bar charts to derive the relationship
-                                   between ages and expected traffic violations in general within the U.S.. Notice that combining 
-                                   two data is necessary because even if The absolute value of traffic violations for people under 
-                                   the age of 20 is very small, it still account for a lot in proportion since there are not many drivers 
-                                   under the age of 20. We can easily see
-                                   from the both bar and pie chart that driver ages among 20-30 year olds account for nearly 
-                                   33% of total traffic violations. Then as the age group increases, the proportion of traffic 
-                                   violations gradually decreases. This is pretty reasonalble due to the fact that driver of 20-30 
-                                   year olds are newbies and they drive more impetuously"),
+                                   between ages and expected percentage of traffic violations in that age range within the U.S.. 
+                                   Notice that combining two data is necessary because even if The absolute value of traffic violations
+                                   for people under the age of 20 is very small, it still a lot in percentage since there are 
+                                   not many drivers under the age of 20. We can easily see from the chart that driver ages among 15-25 year 
+                                   olds have the highest percentage of violation rate. Then as the age group increases, the percentage of traffic 
+                                   violations in that range group gradually decreases. This is pretty reasonalble due to the fact that 
+                                   driver of 20-30 year olds are newbies and they drive more impetuously"),
                                  width=8,style="background-color:lavender;border-radius: 10px")),
                       hr(),
                       
                       # First sector part
-                      h4(p(em("Age in Traffic Violations & Driving Pattern in U.S."),icon("chart-pie",lib = "font-awesome"),style="color:black;text-align:center")),
+                      h4(p(em("Age in Traffic Violations & Driving Pattern(ages) in U.S."),icon("chart-pie",lib = "font-awesome"),style="color:black;text-align:center")),
                       fluidRow(
                           column(6, plotOutput(outputId = "tab2_ageVsVio")),
                           column(6, plotOutput(outputId = "tab2_ageVsVio_general"))
@@ -85,19 +85,58 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                         column(6, plotOutput(outputId = "tab2_ageVsVio_part2_bar")),
                         column(6, plotOutput(outputId = "tab2_ageVsVio_part2_pie"))
                       )
-                      
              ),
              
              
              
-             # tab3: races
+             # tab3: races------------------------------------------------------
              tabPanel("Races",
+                      # General introduction and analysis part
+                      fluidRow(column(width=2),
+                               column(
+                                 h3(p("How Races are Related to Traffic Violations",style="color:black;text-align:center")),
+                                 width=8,style="background-color:lavender;border-radius: 10px")),
+                      br(),
+                      fluidRow(column(width=2, icon("hand-point-right","fa-5x"),align="center"),
+                               column(
+                                 p("This section analyze the relationship between races and traffic
+                                 violations. It includes two parts: "),
+                                 p("The first part shows one bar chart about how  
+                                 races are related to violations within all violations and another bar
+                                 chart shows how races are related to car access in the U.S. Basicly, we
+                                 find out that within all violations, white constitute the
+                                 highest violation percentage, and other races like black, asian and hispanic
+                                 constitue small percentage of violation."),
+                                 p("The second part conbines the provious two bar charts to derive the relationship
+                                   between races and expected traffic violations in general within the U.S.. Notice that combining 
+                                   two data is also necessary because even if the absolute value of traffic violations for white people
+                                   is super high, it still account for not many in proportion since there are much more white drivers 
+                                   in the U.S.. We can easily see
+                                   from the both bar and pie chart that driver black and white drivers are equally likely to violate the traffic
+                                   rules, and the asian and hispanic people are little bit less likely than the black and white people. This 
+                                   refreshes our stereotype that black people are more likely to have traffic violations. In fact, different races share
+                                   similar traffic violation rate"),
+                                 width=8,style="background-color:lavender;border-radius: 10px")),
+                      hr(),
+                      # First sector part
+                      h4(p(em("Races in Traffic Violations & Driving Pattern(races) in U.S."),icon("chart-pie",lib = "font-awesome"),style="color:black;text-align:center")),
+                      fluidRow(
+                        column(6, plotOutput(outputId = "tab3_raceVsVio")),
+                        column(6, plotOutput(outputId = "tab3_raceVsVio_general"))
+                      ),
+                      hr(),
                       
+                      # Second sector part
+                      h4(p(em("Race vs Traffic Violations in the U.S."),icon("chart-pie",lib = "font-awesome"),style="color:black;text-align:center")),
+                      fluidRow(
+                        column(6, plotOutput(outputId = "tab3_raceVsVio_part2_bar")),
+                        column(6, plotOutput(outputId = "tab3_raceVsVio_part2_pie"))
+                      )
              ),
              
              
              
-             # tab4: violation type
+             # tab4: violation type---------------------------------------------
              tabPanel("Violation Type",
                       # General introduction and analysis part
                       fluidRow(column(width=2),
@@ -118,8 +157,9 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                                  width=8,style="background-color:lavender;border-radius: 10px")),
                       hr(),
                       
-                      # First graph
-                      h4(p(em("Bar & Pie Chart for Types of Traffic Violations"),icon("chart-pie",lib = "font-awesome"),style="color:black;text-align:center")),
+                      # Graph part
+                      h4(p(em("Bar & Pie Chart for Types of Traffic Violations"),icon("chart-pie",lib = "font-awesome"),
+                           style="color:black;text-align:center")),
                       fluidRow(
                         column(6, plotOutput(outputId = "tab4_vioType_bar")),
                         column(6, plotOutput(outputId = "tab4_vioType_pie"))
@@ -138,6 +178,7 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
 
 # Define Server
 
+# deal with data ---------------------------------------------------------------
 # inFile <- main_data
 inFile <- traffic_violaions
 
@@ -149,10 +190,11 @@ server <- function(input, output) {
       inFile
     },
     ))
+    
   
+# function for tab2 ------------------------------------------------------------
   
-  # function for tab2:
-  # tidy data for tab2:
+  # tidy data for tab2:---------------------------------
     # first section part:
   tab2_data <- inFile %>%
     mutate(MySpecificBins = cut(driver_age, breaks = c(-Inf, 20,25,30,35,40,45,50,55,60,65,70,75,80,85,Inf)))
@@ -164,12 +206,15 @@ server <- function(input, output) {
   tmp_data <- data.frame(total = c(5859,10677,7579,5436,4864,4547,3921,2933,1813,1017,410,176,70,18,8))
   driver_ages_part4 <- cbind(driver_ages, tmp_data)
   driver_ages_part4$expect_total <- driver_ages_part4$Percentage * driver_ages_part4$total / 100
-  driver_ages_last <- cbind(driver_ages, tmp_data)
-  driver_ages_last$expect_total <- driver_ages_last$Percentage * driver_ages_last$total / 100
-  driver_ages_last <- driver_ages_last[,-4]
-  driver_ages_last <- filter(driver_ages_last, driver_ages_last$expect_total > 10)
+  driver_ages_part4$expect_percentage <- driver_ages_part4$total / driver_ages_part4$NUMBER * 100
   
-  # Plot for tab2
+  driver_ages_last <- cbind(driver_ages, tmp_data)
+  driver_ages_last$expect_percentage <- driver_ages_last$total / driver_ages_last$NUMBER * 100
+  driver_ages_last <- driver_ages_last[,-4]
+  driver_ages_last <- filter(driver_ages_last, driver_ages_last$expect_percentage > 0.0015)
+  
+  
+  # Plot for tab2--------------------------------------
     # function for tab2_ageVsVio
   output$tab2_ageVsVio <- renderPlot({
     
@@ -188,27 +233,85 @@ server <- function(input, output) {
               names.arg = driver_ages$AGE,
                xlab = "Drivers' ages",
                ylab = "Frequency",
-               main = "Bar chart of drivers' age in the U.S.")
+               main = "Bar chart of car access according to drivers' age in the U.S.")
   })
   
     # function for tab2_ageVsVio_part2_bar
   output$tab2_ageVsVio_part2_bar <- renderPlot({
     
-    barplot(driver_ages_part4$expect_total,
+    barplot(driver_ages_part4$expect_percentage,
             names.arg = driver_ages$AGE,
             xlab = "Drivers' ages",
             ylab = "Expected Frequency",
-            main = "Bar chart of drivers' ages versus traffic violations in U.S.")
+            main = "Bar chart of drivers' ages versus percentage of traffic violations in U.S.")
   })
     # function for tab2_ageVsVio_part2_pie
   output$tab2_ageVsVio_part2_pie <- renderPlot({
     
-    pie(driver_ages_last$expect_total,
+    pie(driver_ages_last$expect_percentage,
         labels = driver_ages_last$AGE,
-        main = "Pie chart of types of violations")
+        xlab = "Drivers' ages",
+        main = "Pie chart of traffic violations in general in U.S.")
+  })
+
+  
+  
+# function for tab3:------------------------------------------------------------  
+
+  # tidy data for tab3--------------------------------
+    # First section part
+  tab3_data <- filter(inFile, inFile$driver_race != "") %>%
+    group_by(driver_race) %>%
+      summarise(count = n()) %>%
+        na.omit()
+  driver_races$total_population <- driver_races$without_car / driver_races$without_percentage * 100
+  driver_races$car_access <- driver_races$total_population / (100 - driver_races$without_percentage) * 100
+    # Second section part
+  tab3_tmp_data <- data.frame(violation = c(1375, 6594,4099,149,37364))
+  driver_races <- cbind(driver_races, tab3_tmp_data)
+  driver_races$expected_percentage <- driver_races$violation / driver_races$car_access * 100
+  
+  # Plot for tab3:------------------------------------
+    # function for tab3_raceVsVio
+  output$tab3_raceVsVio <- renderPlot({
+    barplot(tab3_data$count,
+            names.arg = tab3_data$driver_race,
+            xlab = "Drivers' races",
+            ylab = "Frequency",
+            main = "Bar chart of drivers' races in traffic violations")
   })
   
-  # function for tab4:
+    # function for tab3_raceVsVio_general
+  output$tab3_raceVsVio_general <- renderPlot({
+    barplot(driver_races$car_access,
+            names.arg = tab3_data$driver_race,
+            xlab = "Drivers' races",
+            ylab = "Frequency",
+            main = "Bar chart of car access according to drivers' races in the U.S.")
+  })
+  
+  # function for tab3_raceVsVio_part2_bar
+  output$tab3_raceVsVio_part2_bar <- renderPlot({
+    
+    barplot(driver_races$expected_percentage,
+            names.arg = driver_races$driver_race,
+            xlab = "Drivers' race",
+            ylab = "Expected Frequency",
+            main = "Bar chart of drivers' race versus percentage of traffic violations in U.S.")
+  })
+  
+  # function for tab3_raceVsVio_part2_pie
+  output$tab3_raceVsVio_part2_pie <- renderPlot({
+    
+    pie(driver_races$expected_percentage,
+        labels = driver_races$driver_race,
+        xlab = "Drivers' ages",
+        main = "Pie chart of traffic violations in general in U.S.")
+  })
+  
+  
+  
+# function for tab4:------------------------------------------------------------
   # tidy data for tab4
   tab4_data <- filter(inFile, inFile$violation != "") %>%
     group_by(violation) %>%
@@ -225,7 +328,7 @@ server <- function(input, output) {
             main = "Bar chart of types of violations")
   })
   
-  #function for tab4_vioType_pie
+  # function for tab4_vioType_pie
   output$tab4_vioType_pie <- renderPlot({
     
     pie(tab4_data$count,
